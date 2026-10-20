@@ -1,0 +1,27 @@
+{
+  "name": "signaldesk-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Expo Go client for the SignalDesk feedback triage API",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start --lan",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test": "node scripts/check-app.cjs"
+  },
+  "engines": {
+    "node": "20.19.4"
+  },
+  "dependencies": {
+    "expo": "54.0.37",
+    "expo-status-bar": "3.0.9",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.28.4",
+    "babel-preset-expo": "54.0.12"
+  }
+}

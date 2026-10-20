@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "SignalDesk Mobile",
+    "slug": "signaldesk-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "signaldesk",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.signaldesk.mobile"
+    },
+    "android": {
+      "package": "com.signaldesk.mobile"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

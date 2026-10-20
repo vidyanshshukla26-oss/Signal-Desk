@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="SignalDesk is a local-first customer feedback triage workspace."
+    />
+    <title>SignalDesk · Feedback command center</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div>
+            <p class="brand-name">SignalDesk</p>
+            <p class="brand-tagline">Customer voice, clarified.</p>
+          </div>
+        </div>
+
+        <div class="workspace-picker">
+          <label class="field-label" for="workspace-select">Workspace</label>
+          <div class="select-wrap select-wrap-dark">
+            <select id="workspace-select" aria-label="Select workspace" disabled>
+              <option>Loading workspaces…</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">⌄</span>
+          </div>
+          <button class="sidebar-create" type="button" data-action="open-workspace-modal">
+            <span class="button-icon" aria-hidden="true">＋</span>
+            <span>New workspace</span>
+          </button>
+        </div>
+
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a class="nav-link is-active" href="#overview" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">⌂</span>
+            <span>Overview</span>
+          </a>
+          <a class="nav-link" href="#pipeline-title">
+            <span class="nav-icon" aria-hidden="true">◈</span>
+            <span>Signals</span>
+            <span class="nav-count" id="nav-signal-count">—</span>
+          </a>
+          <a class="nav-link" href="#triage-insight">
+            <span class="nav-icon" aria-hidden="true">✦</span>
+            <span>Triage queue</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="local-status" aria-label="Local-first status">
+          <span class="status-orb" aria-hidden="true"></span>
+          <div>
+            <strong>Local-first mode</strong>
+            <span>Ready for your next signal</span>
+          </div>
+        </div>
+        <div class="sidebar-profile">
+          <div class="avatar avatar-small" aria-hidden="true">JD</div>
+          <div>
+            <strong>Jordan Davis</strong>
+            <span>Product lead</span>
+          </div>
+          <button class="icon-button icon-button-dark" type="button" aria-label="Open account menu" title="Account menu">
+            <span aria-hidden="true">•••</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content" id="main-content">
+        <header class="topbar">
+          <div class="breadcrumb" aria-label="Current location">
+            <span>SignalDesk</span>
+            <span class="breadcrumb-separator" aria-hidden="true">/</span>
+            <strong id="topbar-workspace">Loading workspace</strong>
+          </div>
+          <div class="topbar-actions">
+            <button class="button button-quiet" id="refresh-button" type="button">
+              <span class="button-icon" aria-hidden="true">↻</span>
+              <span>Refresh</span>
+            </button>
+            <button class="button button-quiet" id="export-button" type="button">
+              <span class="button-icon" aria-hidden="true">↓</span>
+              <span>Export CSV</span>
+            </button>
+            <div class="avatar" aria-label="Signed in as Jordan Davis">JD</div>
+          </div>
+        </header>
+
+        <div class="global-alert" id="global-alert" role="alert" hidden></div>
+
+        <section class="hero" id="overview" aria-labelledby="workspace-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Feedback command center</p>
+            <h1 id="workspace-title">Good morning, Jordan.</h1>
+            <p id="workspace-description">
+              Turn scattered customer signals into a clear, shared product plan.
+            </p>
+          </div>
+          <button class="button button-primary button-large" type="button" data-action="open-signal-modal">
+            <span class="button-icon" aria-hidden="true">＋</span>
+            <span>Add signal</span>
+          </button>
+        </section>
+
+        <section class="metrics-grid" aria-label="Workspace summary">
+          <article class="metric-card metric-card-primary">
+            <div class="metric-card-topline">
+              <span class="metric-label">All signals</span>
+              <span class="metric-icon" aria-hidden="true">◈</span>
+            </div>
+            <strong class="metric-value" data-metric="all">—</strong>
+            <span class="metric-note">Across every stage</span>
+          </article>
+          <article class="metric-card">
+            <div class="metric-card-topline">
+              <span class="metric-label">Needs a decision</span>
+              <span class="metric-icon metric-icon-coral" aria-hidden="true">!</span>
+            </div>
+            <strong class="metric-value" data-metric="inbox">—</strong>
+            <span class="metric-note">Waiting in inbox</span>
+          </article>
+          <article class="metric-card">
+            <div class="metric-card-topline">
+              <span class="metric-label">Planned</span>
+              <span class="metric-icon metric-icon-violet" aria-hidden="true">◒</span>
+            </div>
+            <strong class="metric-value" data-metric="planned">—</strong>
+            <span class="metric-note">Ready for delivery</span>
+          </article>
+          <article class="metric-card">
+            <div class="metric-card-topline">
+              <span class="metric-label">Shipped</span>
+              <span class="metric-icon metric-icon-lime" aria-hidden="true">✓</span>
+            </div>
+            <strong class="metric-value" data-metric="shipped">—</strong>
+            <span class="metric-note">Closed loop</span>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel pipeline-panel" aria-labelledby="pipeline-title">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Organize the noise</p>
+                <h2 id="pipeline-title">Signal pipeline</h2>
+              </div>
+              <div class="filter-group" id="filter-group" role="group" aria-label="Filter signals by status">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-button" type="button" data-filter="inbox" aria-pressed="false">Inbox</button>
+                <button class="filter-button" type="button" data-filter="planned" aria-pressed="false">Planned</button>
+                <button class="filter-button" type="button" data-filter="in_progress" aria-pressed="false">In progress</button>
+                <button class="filter-button" type="button" data-filter="shipped" aria-pressed="false">Shipped</button>
+              </div>
+            </div>
+            <div class="pipeline-subhead">
+              <p id="pipeline-caption">Every customer voice, with a next step attached.</p>
+              <span class="count-badge" id="signal-count" aria-live="polite">—</span>
+            </div>
+            <div class="feedback-region" id="feedback-region" aria-live="polite" aria-busy="false"></div>
+          </section>
+
+          <aside class="panel detail-panel" id="detail-panel" aria-label="Signal detail" aria-live="polite">
+            <div class="detail-empty" id="detail-empty">
+              <div class="detail-empty-mark" aria-hidden="true">✦</div>
+              <p class="section-kicker">Signal detail</p>
+              <h2 id="detail-empty-title">Choose a signal</h2>
+              <p>Open a signal from the pipeline to inspect its context, triage it, and assign the next move.</p>
+              <div class="detail-empty-tip"><span aria-hidden="true">↗</span> Tip: run triage for an explainable recommendation.</div>
+            </div>
+            <div class="detail-content" id="detail-content" hidden></div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="workspace-modal" hidden>
+      <section class="modal-card modal-card-small" role="dialog" aria-modal="true" aria-labelledby="workspace-modal-title">
+        <button class="modal-close" type="button" data-action="close-modal" aria-label="Close new workspace dialog">×</button>
+        <p class="section-kicker">Make room for a new stream</p>
+        <h2 id="workspace-modal-title">Create workspace</h2>
+        <p class="modal-intro">Keep a team, product, or customer segment focused in its own signal desk.</p>
+        <form id="workspace-form">
+          <div class="form-field">
+            <label for="workspace-name">Workspace name</label>
+            <input id="workspace-name" name="name" type="text" maxlength="80" autocomplete="organization" placeholder="e.g. Core product" required />
+          </div>
+          <p class="form-error" id="workspace-form-error" role="alert" hidden></p>
+          <div class="modal-actions">
+            <button class="button button-secondary" type="button" data-action="close-modal">Cancel</button>
+            <button class="button button-primary" id="workspace-submit" type="submit">Create workspace</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="signal-modal" hidden>
+      <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signal-modal-title">
+        <button class="modal-close" type="button" data-action="close-modal" aria-label="Close add signal dialog">×</button>
+        <p class="section-kicker">Capture the customer voice</p>
+        <h2 id="signal-modal-title">Add a signal</h2>
+        <p class="modal-intro">Save the raw context now. You can triage and route it in one click after.</p>
+        <form id="signal-form">
+          <div class="form-field">
+            <label for="signal-title">Signal title</label>
+            <input id="signal-title" name="title" type="text" maxlength="140" placeholder="What did the customer need?" required />
+          </div>
+          <div class="form-field">
+            <label for="signal-body">What happened?</label>
+            <textarea id="signal-body" name="body" rows="5" maxlength="4000" placeholder="Paste the feedback or summarize the conversation…" required></textarea>
+          </div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="signal-source">Source</label>
+              <div class="select-wrap">
+                <select id="signal-source" name="source" required>
+                  <option value="">Choose a source</option>
+                  <option>Support</option>
+                  <option>Interview</option>
+                  <option>Review</option>
+                  <option>Sales call</option>
+                  <option>Email</option>
+                  <option>Community</option>
+                </select>
+                <span class="select-chevron" aria-hidden="true">⌄</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="signal-customer">Customer</label>
+              <input id="signal-customer" name="customer" type="text" maxlength="120" placeholder="Name or account" required />
+            </div>
+          </div>
+          <p class="form-error" id="signal-form-error" role="alert" hidden></p>
+          <div class="modal-actions">
+            <button class="button button-secondary" type="button" data-action="close-modal">Cancel</button>
+            <button class="button button-primary" id="signal-submit" type="submit">Save signal</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

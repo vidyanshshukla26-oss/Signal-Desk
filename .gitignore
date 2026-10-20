@@ -1,0 +1,21 @@
+node_modules/
+
+# Local recovery archives contain full historical snapshots, not source changes.
+.recovery/
+
+# Never commit local environment overrides or credentials.
+.env
+.env.*
+!.env.example
+
+# Runtime data is intentionally local and may contain customer feedback.
+data/*.json
+data/.*.tmp
+
+# Local logs, coverage, and editor files.
+*.log
+coverage/
+.nyc_output/
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,7 @@
+node_modules
+.expo
+.expo-export-check
+.env
+.env.*
+!.env.example
+npm-debug.log*
