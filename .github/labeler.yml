@@ -1,0 +1,9 @@
+﻿labels:
+  - label: "documentation"
+    files:
+      - "docs/**"
+      - "README.md"
+  - label: "source"
+    files:
+      - "src/**"
+      - "public/**"
